@@ -1,0 +1,104 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+	<title>Text Editor</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="description" content="Text Editor. Developed by Samiul Alim || Team Ex">
+	<link rel="shortcut icon" href="icon.png"><meta property="og:image" content="icon.png">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+	<script id="samiul-mod-input" primary-color="#08e8fd" background-color="#131313" src="samiul.mod.input.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+	<div class="toppart">
+		<div class="header">
+			<button id="menu_btn"><div style="width: 17.5px;height: 20px;"><i class="fa-light fa-clock-rotate-left" id="menu_btn_on"></i><i class="fa-solid fa-xmark" id="menu_btn_off"></i></div></button>
+			<h1 class="title">Text Editor</h1>
+			<button id="delete_btn"><i class="fa-light fa-trash red"></i></button>
+			<button id="upload_btn"><i class="fa-light fa-upload"></i></button><input type="file" style="display:none" id="upload" accept="text/plain">
+			<button id="nowrap_btn"><div style="width: 17.5px;height: 20px;"><i id="nowrap_on" class="fa-light fa-text-width"></i> <i id="nowrap_off" class="fa-light fa-text-height"></i></div></button>
+			<button id="copy_btn"><i class="fa-light fa-copy"></i></button>
+		</div>
+	</div>
+	
+	<div id="nev_menu"></div>
+	
+	<div class="container">	
+		<textarea id="input" ></textarea>
+	</div>
+	
+	<div class="samiul-mod-input m-fixed" id="search">
+		<div class="mod-icon"><i class="fa-brands fa-searchengin"></i></div>
+		<input type="text" class="mod-input"  placeholder=" " value="">
+		<label for="mod-input" class="mod-label">Search</label>
+		<span></span>
+	</div>
+	
+	<div class="samiul-mod-input m-fixed">
+		<div class="mod-icon"><i class="fa-light fa-filter"></i></div>
+		<div class="select"> 
+			<select id="action">
+				<option value="line">Replace With Line</option>
+				<option value="lines">Replace All With Line</option>
+				<option value="text">Replace With Text</option>
+				<option value="texts">Replace All With Text</option>
+				<option value="match">Delete Match</option>
+				<option value="matchs">Delete All Matches</option>
+				<option value="delete">Delete All Matches Lines</option>
+			</select>
+		</div>
+		<span></span>
+	</div>
+	
+	<div class="samiul-mod-input m-fixed" id="mod-line">
+		<div class="mod-icon"><i class="fa-light fa-line-height"></i></div>
+		<div class="select"> 
+			<select id="line">
+				<option value="1">Replace With 1 Line</option>
+				<option value="2">Replace With 2 Lines</option>
+				<option value="3">Replace With 3 Lines</option>
+				<option value="4">Replace With 4 Lines</option>
+				<option value="5">Replace With 5 Lines</option>
+				<option value="0">Delete New Line (Search Null)</option>
+			</select>
+		</div>
+		<span></span>
+	</div>
+	
+	<div class="samiul-mod-input m-fixed none" id="text">
+		<div class="mod-icon"><i class="fa-light fa-text"></i></div>
+		<input type="text" class="mod-input"  placeholder=" " value="">
+		<label for="mod-input" class="mod-label">Text</label>
+		<span></span>
+	</div>
+	
+	<div class="samiul-mod-input m-fixed none" id="mod-match">
+		<div class="mod-icon"><i class="fa-light fa-trash"></i></div>
+		<div class="select"> 
+			<select id="match">
+				<option value="delete">Delete Match Text</option>
+				<option value="empty">Delete Empty Line (Search Null)</option>
+			</select>
+		</div>
+		<span></span>
+	</div>	
+	
+	<div class="samiul-mod-input m-fixed none" id="mod-delete">
+		<div class="mod-icon"><i class="fa-light fa-empty-set"></i></div>
+		<div class="select"> 
+			<select id="delete">
+				<option value="0">Delete With Empty Line</option>
+				<option value="1">Delete Without Empty Line</option>
+			</select>
+		</div>
+		<span></span>
+	</div>
+	
+	<div class="button m-fixed" id="edit"><h2>Edit Now</h2></div>
+	
+<script>var _0x4b227d=_0x1b5e;(function(_0x1c3304,_0x399335){var _0x28820b=_0x1b5e,_0x542190=_0x1c3304();while(!![]){try{var _0x29c301=-parseInt(_0x28820b(0x16e))/0x1+-parseInt(_0x28820b(0x168))/0x2*(-parseInt(_0x28820b(0x144))/0x3)+parseInt(_0x28820b(0x177))/0x4*(parseInt(_0x28820b(0x147))/0x5)+parseInt(_0x28820b(0x133))/0x6+parseInt(_0x28820b(0x12c))/0x7*(-parseInt(_0x28820b(0x174))/0x8)+parseInt(_0x28820b(0x157))/0x9+parseInt(_0x28820b(0x160))/0xa*(-parseInt(_0x28820b(0x13b))/0xb);if(_0x29c301===_0x399335)break;else _0x542190['push'](_0x542190['shift']());}catch(_0x40107c){_0x542190['push'](_0x542190['shift']());}}}(_0x2031,0x2552f));var newLine='\x0d\x0a';$(_0x4b227d(0x15c))[_0x4b227d(0x137)](function(){var _0x260c41=_0x4b227d,_0x72ce69=$(_0x260c41(0x15c))[_0x260c41(0x142)]();if(_0x72ce69==_0x260c41(0x16c)||_0x72ce69==_0x260c41(0x12e))$(_0x260c41(0x151))[_0x260c41(0x129)](_0x260c41(0x171)),$('#mod-match')['addClass'](_0x260c41(0x171)),$('#mod-delete')[_0x260c41(0x129)](_0x260c41(0x171)),$('#mod-line')[_0x260c41(0x164)](_0x260c41(0x171));else{if(_0x72ce69==_0x260c41(0x16f)||_0x72ce69==_0x260c41(0x169))$(_0x260c41(0x151))[_0x260c41(0x164)]('none'),$('#mod-line')[_0x260c41(0x129)]('none'),$(_0x260c41(0x14d))[_0x260c41(0x129)]('none'),$('#mod-match')[_0x260c41(0x129)](_0x260c41(0x171));else _0x72ce69==_0x260c41(0x143)||_0x72ce69==_0x260c41(0x166)?($(_0x260c41(0x151))[_0x260c41(0x129)](_0x260c41(0x171)),$(_0x260c41(0x145))['addClass'](_0x260c41(0x171)),$(_0x260c41(0x14d))[_0x260c41(0x129)](_0x260c41(0x171)),$('#mod-match')[_0x260c41(0x164)](_0x260c41(0x171))):($(_0x260c41(0x151))[_0x260c41(0x129)]('none'),$(_0x260c41(0x145))[_0x260c41(0x129)](_0x260c41(0x171)),$('#mod-match')['addClass']('none'),$(_0x260c41(0x14d))['removeClass'](_0x260c41(0x171)));}SearchNull();}),$('#line')['change'](function(){SearchNull();}),$(_0x4b227d(0x155))[_0x4b227d(0x137)](function(){SearchNull();}),$(_0x4b227d(0x13a))[_0x4b227d(0x138)](function(){SearchNull();}),$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x150),function(){var _0x258628=_0x4b227d,_0x503234=$(_0x258628(0x12f))[_0x258628(0x142)](),_0x932896=$(_0x258628(0x13a))['getValue'](),_0x475960=$('#action')[_0x258628(0x142)]();letsEdit(_0x503234,_0x932896,_0x475960);});function _0x2031(){var _0x300471=['texts','hide','#delete','line','append','126460suSrqW','text','#delete_btn','none','result','remove','8vRCrYh','moveout2mobile','name','610892LpbFmF','split','getValue','#nowrap_on','<div\x20class=\x22historey\x22\x20onclick=\x22setInput(\x27','addClass','</div><div\x20class=\x22flex2\x22><p\x20class=\x22historey_words\x22>','body','122164BBCaJq','upload','lines','#input','length','empty','click','1357404TIsCrB','removeWarning','Copyed\x20WordPress\x20Site','#menu_btn_on','change','keyup','join','#search','2964753AMxxFv','getElementById','\x20words</p><p\x20class=\x22historey_date\x22>','setWarning','setValue','#menu_btn','#upload','val','match','57EWbpne','#mod-line','fire','5ITgnNu','show','execCommand','success','<textarea></textarea>','#menu_btn_off','#mod-delete','value','indexOf','#edit','#text','onload','movein2mobile','nowrap','#match','files','1169964fDcbXI','replace','#upload_btn','#line','#nowrap_btn','#action','delete','Loading...','#copy_btn','10qcyiQQ','substring','Empty','nl&#&nl','removeClass','#nev_menu','matchs','target','6038DfIIch'];_0x2031=function(){return _0x300471;};return _0x2031();}function letsEdit(_0x4013ab,_0x58ae3d,_0x282f6a){var _0x13a95a=_0x4b227d,_0x159bb3=!![];if(_0x4013ab=='')_0x159bb3=![];else{if(_0x282f6a=='line'){var _0x3ac8ad=getLine($(_0x13a95a(0x15a))[_0x13a95a(0x142)]());if(_0x3ac8ad=='')var _0xd579ed=replace(_0x4013ab,'\x0a',_0x3ac8ad);else{_0x58ae3d==''&&(_0x58ae3d='\x0a');var _0xd579ed=replace(_0x4013ab,_0x58ae3d,_0x3ac8ad);}}else{if(_0x282f6a==_0x13a95a(0x12e)){var _0x3ac8ad=getLine($(_0x13a95a(0x15a))[_0x13a95a(0x142)]());if(_0x3ac8ad=='')var _0xd579ed=replaceAll(_0x4013ab,/\r?\n|\r|\n/g,_0x3ac8ad);else{_0x58ae3d==''&&(_0x58ae3d=/\r?\n|\r|\n/g);var _0xd579ed=replaceAll(_0x4013ab,_0x58ae3d,_0x3ac8ad);}}else{if(_0x282f6a==_0x13a95a(0x16f)){if(_0x58ae3d=='')_0x159bb3=![];else var _0x4d25a6=$(_0x13a95a(0x151))[_0x13a95a(0x126)](),_0xd579ed=replace(_0x4013ab,_0x58ae3d,_0x4d25a6);}else{if(_0x282f6a==_0x13a95a(0x169)){if(_0x58ae3d=='')_0x159bb3=![];else var _0x4d25a6=$(_0x13a95a(0x151))['getValue'](),_0xd579ed=replaceAll(_0x4013ab,_0x58ae3d,_0x4d25a6);}else{if(_0x282f6a==_0x13a95a(0x143)){var _0x39cdba=$('#match')[_0x13a95a(0x142)]();if(_0x39cdba=='delete'){if(_0x58ae3d=='')_0x159bb3=![];else var _0xd579ed=replace(_0x4013ab,_0x58ae3d,'');}else var _0xd579ed=replace(_0x4013ab,/(?:(?:\r\n|\r|\n)\s*){2}/,'\x0a');}else{if(_0x282f6a==_0x13a95a(0x166)){var _0x39cdba=$(_0x13a95a(0x155))[_0x13a95a(0x142)]();if(_0x39cdba==_0x13a95a(0x15d)){if(_0x58ae3d=='')_0x159bb3=![];else var _0xd579ed=replaceAll(_0x4013ab,_0x58ae3d,'');}else var _0xd579ed=replaceAll(_0x4013ab,/(?:(?:\r\n|\r|\n)\s*){2}/,'\x0a');}else{if(_0x58ae3d=='')_0x159bb3=![];else var _0xd579ed=deleteWithLine(_0x4013ab,_0x58ae3d,getLine($(_0x13a95a(0x16b))['val']()));}}}}}}}_0x159bb3&&(setInput(_0xd579ed),setNav(_0xd579ed));}function _0x1b5e(_0xc092c3,_0x39cda4){var _0x203193=_0x2031();return _0x1b5e=function(_0x1b5ec8,_0x548276){_0x1b5ec8=_0x1b5ec8-0x126;var _0x10a49a=_0x203193[_0x1b5ec8];return _0x10a49a;},_0x1b5e(_0xc092c3,_0x39cda4);}function SearchNull(){var _0x579528=_0x4b227d,_0x22b969=$(_0x579528(0x15c))[_0x579528(0x142)]();if(_0x22b969==_0x579528(0x16c)||_0x22b969==_0x579528(0x12e)){var _0x131319=$(_0x579528(0x15a))[_0x579528(0x142)]();_0x131319=='0'?($(_0x579528(0x13a))[_0x579528(0x13f)](''),$(_0x579528(0x13a))[_0x579528(0x13e)]('')):$(_0x579528(0x13a))[_0x579528(0x134)]('');}else{if(_0x22b969==_0x579528(0x143)||_0x22b969==_0x579528(0x166)){var _0x66d449=$('#match')[_0x579528(0x142)]();_0x66d449==_0x579528(0x131)?($(_0x579528(0x13a))[_0x579528(0x13f)](''),$('#search')[_0x579528(0x13e)]('')):$(_0x579528(0x13a))['removeWarning']('');}else $(_0x579528(0x13a))[_0x579528(0x134)]('');}}function getLine(_0x56b25e){if(_0x56b25e=='0')return'';else{if(_0x56b25e=='1')return newLine;else{if(_0x56b25e=='2')return newLine+newLine;else{if(_0x56b25e=='3')return newLine+newLine+newLine;else return _0x56b25e=='4'?newLine+newLine+newLine+newLine:newLine+newLine+newLine+newLine+newLine;}}}}function replace(_0x3d34bb,_0x3a5fed,_0x478518){var _0x3e7de4=_0x4b227d;return _0x3d34bb[_0x3e7de4(0x158)](_0x3a5fed,_0x478518);}function replaceAll(_0x5c6535,_0x5f27b9,_0x308450){var _0x4a1b33=_0x4b227d;return _0x5c6535[_0x4a1b33(0x178)](_0x5f27b9)['join'](_0x308450);}function deleteWithLine(_0x1c7f96,_0x3feca5,_0x4c1607){var _0x19ff1d=_0x4b227d,_0x58401d='',_0x1ab66c=_0x1c7f96['split'](/\r?\n|\r|\n/g),_0x54fad6=_0x1ab66c['length'];for(var _0x528288=0x0;_0x528288<_0x54fad6;_0x528288++){_0x1ab66c[_0x528288][_0x19ff1d(0x14f)](_0x3feca5)>=0x0?_0x528288!=_0x54fad6-0x1&&(_0x58401d=_0x58401d+_0x4c1607):_0x528288!=_0x54fad6-0x1?_0x58401d=_0x58401d+_0x1ab66c[_0x528288]+newLine:_0x58401d=_0x58401d+_0x1ab66c[_0x528288];}return _0x58401d;}function setInput(_0x5ad5e9){var _0x47e739=_0x4b227d,_0xd1788a=replaceAll(_0x5ad5e9,/cl&#&cl/g,'\x27'),_0x593cf6=replaceAll(_0xd1788a,/nl&#&nl/g,'\x0a');$(_0x47e739(0x12f))[_0x47e739(0x142)](_0x593cf6);}function setNav(_0x10f035){var _0x42a624=_0x4b227d,_0x117657=new Date(),_0x30c54c=replaceAll(_0x10f035,/'/g,'cl&#&cl'),_0x434f0c=replaceAll(_0x30c54c,/\r?\n|\r|\n/g,_0x42a624(0x163)),_0x129805=String(_0x117657['toLocaleTimeString']());$(_0x42a624(0x165))[_0x42a624(0x16d)](_0x42a624(0x128)+_0x434f0c+'\x27)\x22><div\x20class=\x22historey_title\x22>'+getFirstWords(_0x10f035)+_0x42a624(0x12a)+_0x10f035[_0x42a624(0x130)]+_0x42a624(0x13d)+_0x129805+'</p></div></div>');}function getFirstWords(_0x29d94d){var _0xa28447=_0x4b227d;if(_0x29d94d=='')return _0xa28447(0x162);return _0x29d94d[_0xa28447(0x161)](0x0,0x32);}$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x165),function(){var _0x112eb2=_0x4b227d;$(_0x112eb2(0x140))[_0x112eb2(0x132)]();}),$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x170),function(){var _0x373b08=_0x4b227d;$('#input')[_0x373b08(0x142)]('');}),$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x159),function(){var _0x51935a=_0x4b227d;$(_0x51935a(0x141))[_0x51935a(0x132)]();}),$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x15f),function(){var _0x5b6065=_0x4b227d,_0x4a143d=$(_0x5b6065(0x14b));$(_0x5b6065(0x12b))[_0x5b6065(0x16d)](_0x4a143d),_0x4a143d[_0x5b6065(0x142)]($('#input')[_0x5b6065(0x142)]())['select'](),document[_0x5b6065(0x149)]('copy'),_0x4a143d[_0x5b6065(0x173)](),swal[_0x5b6065(0x146)](_0x5b6065(0x135),'',_0x5b6065(0x14a));}),$(document)['on'](_0x4b227d(0x137),'#upload',function(){var _0x18560a=_0x4b227d;let _0x93bd2a=document[_0x18560a(0x13c)](_0x18560a(0x12d)),_0x13f6a1=document['getElementById']('input'),_0x1f2412=_0x93bd2a[_0x18560a(0x156)];_0x13f6a1[_0x18560a(0x14e)]=_0x18560a(0x15e);if(_0x1f2412[_0x18560a(0x130)]==0x0){_0x13f6a1['value']='No\x20file\x20selected';return;}const _0x1ce57a=_0x1f2412[0x0];let _0x9efcb1=new FileReader();_0x9efcb1[_0x18560a(0x152)]=_0x3b9ad3=>{var _0x14b630=_0x18560a;const _0x89f6da=_0x3b9ad3['target'][_0x14b630(0x172)],_0x4bc9e0=_0x89f6da['split'](/\r\n|\n/);_0x13f6a1[_0x14b630(0x14e)]=_0x4bc9e0[_0x14b630(0x139)]('\x0a');},_0x9efcb1['onerror']=_0x247e3e=>alert(_0x247e3e[_0x18560a(0x167)]['error'][_0x18560a(0x176)]),_0x9efcb1['readAsText'](_0x1ce57a);}),$(document)['on']('click',_0x4b227d(0x15b),function(){var _0x3dfb69=_0x4b227d;$('#input')['hasClass'](_0x3dfb69(0x154))?($('#input')[_0x3dfb69(0x164)](_0x3dfb69(0x154)),$('#nowrap_off')[_0x3dfb69(0x16a)](0xfa),$(_0x3dfb69(0x127))[_0x3dfb69(0x148)](0xfa)):($('#input')[_0x3dfb69(0x129)]('nowrap'),$(_0x3dfb69(0x127))[_0x3dfb69(0x16a)](0xfa),$('#nowrap_off')[_0x3dfb69(0x148)](0xfa));}),$(document)['on'](_0x4b227d(0x132),_0x4b227d(0x140),function(){var _0x2eee09=_0x4b227d;$(_0x2eee09(0x165))['hasClass']('moveout2mobile')?($(_0x2eee09(0x165))[_0x2eee09(0x164)]('moveout2mobile'),$(_0x2eee09(0x165))[_0x2eee09(0x129)](_0x2eee09(0x153)),$(_0x2eee09(0x14c))['hide'](0xfa),$(_0x2eee09(0x136))[_0x2eee09(0x148)](0xfa)):($(_0x2eee09(0x165))[_0x2eee09(0x164)](_0x2eee09(0x153)),$(_0x2eee09(0x165))[_0x2eee09(0x129)](_0x2eee09(0x175)),$('#menu_btn_on')[_0x2eee09(0x16a)](0xfa),$(_0x2eee09(0x14c))[_0x2eee09(0x148)](0xfa));});</script>
+</body>
+</html>
